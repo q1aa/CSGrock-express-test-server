@@ -25,9 +25,16 @@ app.use((req, res, next) => {
 
 app.get('/home', (req, res) => {
     res.status(200).send(`
-        <h1>Home</h1>
-        <p>Welcome home!</p>
-        <img src="Z.png" />
+        <!DOCTYPE html>
+        <html>
+            <head>
+            <link rel="stylesheet" href="style.css">
+                <title>Home</title>
+            </head>
+            <body>
+                <h1>Home</h1>
+            </body>
+        </html>
     `);
 });
 
