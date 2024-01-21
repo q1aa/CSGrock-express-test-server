@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use((req, res, next) => {
-    if(req.path == "/home" || req.path == "/api/v1/post") return next();
+    if(req.path == "/home" || req.path == "/api/v1/post" || req.path == "/api/v1/head") return next();
 
     var path = req.path;
     var method = req.method;
@@ -46,6 +46,12 @@ app.post('/api/v1/post', async (req, res) => {
         return res.status(400).send({ error: 'Missing name or age' });
     }
     res.status(201).send({ name, age });
+});
+
+app.head('/api/v1/head', (req, res) => {
+    res.status(300).send({
+        headers: req.headers
+    });
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
